@@ -10,17 +10,11 @@ public class Main {
         titular2.nome =  "Fernando Gomes";
         titular2.documento = "9882331432547";
 
-        Conta minhaConta = new Conta();
-        minhaConta.pessoa = titular1;
-        minhaConta.agencia = 1;
-        minhaConta.numero = 369;
-        minhaConta.saldo = 45_000;
+        Conta minhaConta = new Conta(titular1, 1, 369);
+        minhaConta.depositar(45_000);
 
-        Conta suaConta = new Conta();
-        suaConta.pessoa = titular2;
-        suaConta.agencia = 2;
-        suaConta.numero = 246;
-        suaConta.saldo = 30_000;
+        Conta suaConta = new Conta(titular2, 2, 246);
+        suaConta.depositar(30_000);
 
 
         System.out.println("Titular: " + minhaConta.pessoa.nome);
@@ -28,6 +22,10 @@ public class Main {
 
         System.out.println("Titular: " + suaConta.pessoa.nome);
         System.out.println("Saldo: " + suaConta.saldo);
+
+        suaConta.sacar(15_000, 30);
+
+        System.out.println("Saldo da sua conta: " + suaConta.saldo);
     }
 
 }
