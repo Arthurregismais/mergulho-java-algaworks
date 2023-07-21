@@ -41,11 +41,11 @@ public class Conta {
     }
 
     public void sacar (double saque) {
-        if (saque < 0 ) {
+        if (saldo < 0 ) {
             throw new IllegalArgumentException("Valor de saque inválido");
         }
 
-        else if (saque <= saldo) {
+        else if (saque <= getSaldoDisponivel()) {
             saldo -= saque;
         }
         else  {
@@ -55,6 +55,10 @@ public class Conta {
     
     public void sacar (double saque, double taxaDeSaque) {
         sacar(saque + taxaDeSaque);
+    }
+
+    public double getSaldoDisponivel() {
+        return getSaldo();
     }
 
 }
