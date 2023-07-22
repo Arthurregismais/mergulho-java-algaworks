@@ -1,5 +1,6 @@
 package banco.app;
 
+import banco.modelo.CaixaEletronico;
 //import banco.modelo.Conta;
 import banco.modelo.ContaEspecial;
 import banco.modelo.ContaInvestimento;
@@ -24,6 +25,8 @@ public class Main {
         ContaEspecial suaConta = new ContaEspecial(titular2, 2, 246, 1_000);
         suaConta.depositar(30_000);
 
+        CaixaEletronico caixaEletronico = new CaixaEletronico();
+
         //// System.out.println("Titular: " + minhaConta.getPessoa().getNome());
         /// System.out.println("Saldo: " + minhaConta.getSaldo());
 
@@ -35,12 +38,10 @@ public class Main {
         System.out.println("Saldo da sua conta: " + suaConta.getSaldo());
 
         minhaConta.creditarRendimentos(0.8);
-        System.out.println("Titular: " + minhaConta.getPessoa().getNome());
-        System.out.println("Saldo da minha conta: " + minhaConta.getSaldo());
-
-        suaConta.sacar(15000);
-        System.out.println("Titular: " + suaConta.getPessoa().getNome());
-        System.out.println("Saldo da sua conta: " + suaConta.getSaldo());
+        
+        caixaEletronico.imprimirSaldo(suaConta);
+        System.out.println();
+        caixaEletronico.imprimirSaldo(minhaConta);
 
     }
 
