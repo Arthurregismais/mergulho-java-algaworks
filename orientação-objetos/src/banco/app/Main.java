@@ -1,10 +1,14 @@
 package banco.app;
 
-import banco.modelo.CaixaEletronico;
 import banco.modelo.Conta;
 import banco.modelo.ContaEspecial;
 import banco.modelo.ContaInvestimento;
 import banco.modelo.Titular;
+import banco.modelo.atm.CaixaEletronico;
+import banco.modelo.excecao.SaldoInsuficienteException;
+import banco.modelo.pagamento.Boleto;
+import banco.modelo.pagamento.DocumentoPagavel;
+import banco.modelo.pagamento.Holerite;
 
 
 public class Main {
@@ -27,24 +31,33 @@ public class Main {
 
         CaixaEletronico caixaEletronico = new CaixaEletronico();
 
-        suaConta.sacar(15_000, 30);
+        try {
+            minhaConta.depositar(30_000);
+            minhaConta.sacar(1_000);
 
-        System.out.println("Saldo da sua conta: " + suaConta.getSaldo());
-        System.out.println("Saldo da minha conta: " + minhaConta.getSaldo());
+            suaConta.depositar(15_000);
+            suaConta.sacar(15_500);
+            suaConta.debitarTarifaMensal();
 
-        minhaConta.creditarRendimentos(0.8);
+            Boleto boletoEscola = new Boleto(titular2, 35_000);
+            Holerite salarioFuncionario = new Holerite(titular2, 100, 160);
 
-        System.out.println("Saldo da minha conta: " + minhaConta.getSaldo());
+            caixaEletronico.pagar(boletoEscola, minhaConta);
+            caixaEletronico.pagar(salarioFuncionario, minhaConta);
 
-        minhaConta.debitarTarifaMensal();
-        suaConta.debitarTarifaMensal();
+            caixaEletronico.estornarPagamento(boletoEscola, minhaConta);
+
+            boletoEscola.imprimirRecibo();
+            salarioFuncionario.imprimirRecibo();
+        } catch (SaldoInsuficienteException e) {
+            System.out.println("Erro ao executar operação na conta: " + e.getMessage());
+        }
+
         
-        caixaEletronico.imprimirSaldo(suaConta);
-        System.out.println();
         caixaEletronico.imprimirSaldo(minhaConta);
+        System.out.println("");
+        caixaEletronico.imprimirSaldo(suaConta);
 
-        Conta conta = suaConta;
-        conta.debitarTarifaMensal();
 
     }
 
