@@ -2,7 +2,7 @@ package banco.modelo;
 
 import java.util.Objects;
 
-public class Conta {
+public abstract class Conta {
     
     private Titular pessoa;
     private int agencia;
@@ -32,6 +32,8 @@ public class Conta {
         this.agencia = agencia;
         this.numero = numero;
     }
+
+    public abstract void debitarTarifaMensal();
 
     public void depositar(double deposito) {
         if (deposito < 0 ) {

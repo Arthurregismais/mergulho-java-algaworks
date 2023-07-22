@@ -27,4 +27,11 @@ public class ContaEspecial extends Conta{
     public void sacar(){
 
     }
+
+
+
+    @Override
+    public void debitarTarifaMensal() {
+        sacar(20);
+    }
 }
