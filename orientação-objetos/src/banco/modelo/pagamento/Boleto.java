@@ -1,21 +1,23 @@
 package banco.modelo.pagamento;
 
+import java.math.BigDecimal;
+
 import banco.modelo.Titular;
 
 public class Boleto implements DocumentoPagavel, DocumentoEstornavel {
 
     private Titular beneficiario;
-    private double valor;
+    private BigDecimal valor;
     private boolean pago = false;
 
-    public Boleto(Titular beneficiario, double valor) {
+    public Boleto(Titular beneficiario, BigDecimal valor) {
         this.beneficiario = beneficiario;
         this.valor = valor;
         
     }
 
     @Override
-    public double getValorTotal() {
+    public BigDecimal getValorTotal() {
         return valor;
     }
 
