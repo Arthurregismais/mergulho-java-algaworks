@@ -5,11 +5,26 @@ import java.time.LocalDateTime;
 
 public class Titular {
     
-    private String nome;
+
     private String documento;
     private BigDecimal rendimentoAnual;
     private TipoPessoa tipo = TipoPessoa.FISICA;
     private LocalDateTime dataUltimaAtualizacao = LocalDateTime.now();
+
+    private String nome;
+    public Titular(String nome, String documento) {
+        this.nome = nome;
+        this.documento = documento;
+    }
+
+    public Titular() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Titular [documento=" + documento + ", tipo=" + tipo + ", nome=" + nome + "]";
+    }
 
     public LocalDateTime getDataUltimaAtualizacao() {
         return dataUltimaAtualizacao;
@@ -44,5 +59,29 @@ public class Titular {
         this.rendimentoAnual = rendimentoAnual;
     }
 
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((documento == null) ? 0 : documento.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Titular other = (Titular) obj;
+        if (documento == null) {
+            if (other.documento != null)
+                return false;
+        } else if (!documento.equals(other.documento))
+            return false;
+        return true;
+    }
     
 }
