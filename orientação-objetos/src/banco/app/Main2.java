@@ -14,16 +14,19 @@ public class Main2 {
         Titular pessoa1 = new Titular("João da Silva", "23423132");
         Titular pessoa2 = new Titular("Alberto Vieira", "1232145511");
 
-        Set<Titular> pessoas = new HashSet()<>();
+        Set<Titular> pessoas = new HashSet<>();
 
         pessoas.add(pessoa1);
         pessoas.add(pessoa2);
 
-        for (int i = 0; i < pessoas.size(); i++) {
+        /*for (int i = 0; i < pessoas.size(); i++) {
             System.out.println(pessoas.get(i).getNome());
-        }
+        }*/
 
+        Titular pessoa4 = new Titular("João da Silva", "12312312311");
 
+        boolean existe = pessoas.contains(pessoa4);
+        System.out.println(existe);
     }
     
 }
