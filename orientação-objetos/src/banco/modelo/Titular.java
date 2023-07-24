@@ -23,7 +23,7 @@ public class Titular {
 
     @Override
     public String toString() {
-        return "Titular [documento=" + documento + ", tipo=" + tipo + ", nome=" + nome + "]";
+        return "Titular [nome=" + nome + ", documento=" + documento + ", tipo=" + tipo + "]";
     }
 
     public LocalDateTime getDataUltimaAtualizacao() {

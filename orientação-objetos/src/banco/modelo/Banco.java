@@ -10,7 +10,7 @@ public class Banco {
 
     public Banco() {
         Titular pessoa1 = new Titular("João da Silva", "12312312311");
-        Titular pessoa2 = new Titular("Maria das Couves", "12312312311");
+        Titular pessoa2 = new Titular("Maria das Couves", "234343242562311");
 
         Conta conta1 = new ContaInvestimento(pessoa1, 222, 999);
         Conta conta2 = new ContaInvestimento(pessoa1, 123, 888);
